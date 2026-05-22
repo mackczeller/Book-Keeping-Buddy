@@ -1,0 +1,687 @@
+{
+  "company": "Mesa Verde Restaurant",
+  "sic_code": "5812",
+  "currency": "USD",
+  "fiscal_year_start": "2025-01-01",
+  "generated_at": "2025-05-20T00:00:00Z",
+  "accounts": [
+
+
+    {
+      "id": "ACC-1000",
+      "name": "Checking Account — Mesa Verde Operating",
+      "account_type": "Bank",
+      "account_subtype": "Checking",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Primary operating checking account. All Toast deposits land here. All vendor ACH payments originate here."
+    },
+    {
+      "id": "ACC-1010",
+      "name": "Savings Reserve",
+      "account_type": "Bank",
+      "account_subtype": "Savings",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Emergency and tax reserve account."
+    },
+    {
+      "id": "ACC-1020",
+      "name": "Petty Cash",
+      "account_type": "Other Current Asset",
+      "account_subtype": "Cash",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "On-site cash box for small incidental purchases."
+    },
+    {
+      "id": "ACC-1100",
+      "name": "Accounts Receivable",
+      "account_type": "Accounts Receivable",
+      "account_subtype": null,
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Outstanding amounts owed to Mesa Verde — primarily catering deposits and event invoices."
+    },
+    {
+      "id": "ACC-1200",
+      "name": "Food Inventory — On Hand",
+      "account_type": "Other Current Asset",
+      "account_subtype": "Inventory",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Estimated value of food inventory currently on premises. Updated from theoretical counts."
+    },
+    {
+      "id": "ACC-1210",
+      "name": "Liquor & Beverage Inventory — On Hand",
+      "account_type": "Other Current Asset",
+      "account_subtype": "Inventory",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Estimated value of liquor, beer, wine, and NA beverages currently on premises."
+    },
+    {
+      "id": "ACC-1300",
+      "name": "Prepaid Expenses",
+      "account_type": "Other Current Asset",
+      "account_subtype": "Prepaid",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Insurance premiums and annual software subscriptions paid in advance."
+    },
+    {
+      "id": "ACC-1500",
+      "name": "Kitchen Equipment",
+      "account_type": "Fixed Asset",
+      "account_subtype": "Machinery & Equipment",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Ovens, ranges, fryers, refrigeration units, and other major kitchen equipment."
+    },
+    {
+      "id": "ACC-1510",
+      "name": "Accumulated Depreciation — Kitchen Equipment",
+      "account_type": "Fixed Asset",
+      "account_subtype": "Accumulated Depreciation",
+      "classification": "Asset",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Contra account for kitchen equipment depreciation."
+    },
+    {
+      "id": "ACC-1520",
+      "name": "Furniture & Fixtures",
+      "account_type": "Fixed Asset",
+      "account_subtype": "Furniture & Fixtures",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Tables, chairs, bar stools, host stand, and decorative fixtures."
+    },
+    {
+      "id": "ACC-1530",
+      "name": "Accumulated Depreciation — Furniture & Fixtures",
+      "account_type": "Fixed Asset",
+      "account_subtype": "Accumulated Depreciation",
+      "classification": "Asset",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Contra account for furniture and fixtures depreciation."
+    },
+    {
+      "id": "ACC-1540",
+      "name": "Leasehold Improvements",
+      "account_type": "Fixed Asset",
+      "account_subtype": "Leasehold Improvements",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Build-out costs, HVAC upgrades, hood installation, and other tenant improvements."
+    },
+    {
+      "id": "ACC-1550",
+      "name": "Accumulated Depreciation — Leasehold Improvements",
+      "account_type": "Fixed Asset",
+      "account_subtype": "Accumulated Depreciation",
+      "classification": "Asset",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Contra account for leasehold improvement amortization."
+    },
+    {
+      "id": "ACC-1560",
+      "name": "POS & Technology Equipment",
+      "account_type": "Fixed Asset",
+      "account_subtype": "Machinery & Equipment",
+      "classification": "Asset",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Toast terminals, tablets, receipt printers, networking hardware."
+    },
+
+
+    {
+      "id": "ACC-2000",
+      "name": "Accounts Payable",
+      "account_type": "Accounts Payable",
+      "account_subtype": null,
+      "classification": "Liability",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Amounts owed to vendors. All vendor invoices post here pending owner approval."
+    },
+    {
+      "id": "ACC-2100",
+      "name": "Sales Tax Payable",
+      "account_type": "Other Current Liability",
+      "account_subtype": "Sales Tax Payable",
+      "classification": "Liability",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "State and local sales tax collected from customers. Remitted monthly."
+    },
+    {
+      "id": "ACC-2110",
+      "name": "Tips Payable",
+      "account_type": "Other Current Liability",
+      "account_subtype": "Other Current Liability",
+      "classification": "Liability",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Tips collected from card transactions pending distribution to staff."
+    },
+    {
+      "id": "ACC-2120",
+      "name": "Gift Cards Liability",
+      "account_type": "Other Current Liability",
+      "account_subtype": "Deferred Revenue",
+      "classification": "Liability",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Unredeemed gift card balances."
+    },
+    {
+      "id": "ACC-2200",
+      "name": "Payroll Liabilities — FICA Employee",
+      "account_type": "Other Current Liability",
+      "account_subtype": "Payroll Liabilities",
+      "classification": "Liability",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Employee-side Social Security and Medicare withheld, pending IRS remittance."
+    },
+    {
+      "id": "ACC-2210",
+      "name": "Payroll Liabilities — FICA Employer",
+      "account_type": "Other Current Liability",
+      "account_subtype": "Payroll Liabilities",
+      "classification": "Liability",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Employer-side Social Security and Medicare, pending IRS remittance."
+    },
+    {
+      "id": "ACC-2220",
+      "name": "Payroll Liabilities — Federal Income Tax Withheld",
+      "account_type": "Other Current Liability",
+      "account_subtype": "Payroll Liabilities",
+      "classification": "Liability",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Federal income tax withheld from employee paychecks, pending IRS remittance."
+    },
+    {
+      "id": "ACC-2300",
+      "name": "Short-Term Loan — Equipment",
+      "account_type": "Other Current Liability",
+      "account_subtype": "Line of Credit",
+      "classification": "Liability",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "12-month equipment financing for hood and ventilation upgrade."
+    },
+    {
+      "id": "ACC-2500",
+      "name": "Long-Term Loan — SBA",
+      "account_type": "Long-Term Liability",
+      "account_subtype": "Notes Payable",
+      "classification": "Liability",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "SBA 7(a) loan used for initial restaurant build-out."
+    },
+
+
+    {
+      "id": "ACC-3000",
+      "name": "Owner's Equity",
+      "account_type": "Equity",
+      "account_subtype": "Opening Balance Equity",
+      "classification": "Equity",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Owner capital contributions and retained earnings."
+    },
+    {
+      "id": "ACC-3100",
+      "name": "Owner's Draw",
+      "account_type": "Equity",
+      "account_subtype": "Owner's Equity",
+      "classification": "Equity",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Distributions taken by owner. Contra equity account."
+    },
+    {
+      "id": "ACC-3200",
+      "name": "Retained Earnings",
+      "account_type": "Equity",
+      "account_subtype": "Retained Earnings",
+      "classification": "Equity",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Cumulative net income retained in the business."
+    },
+
+
+    {
+      "id": "ACC-4000",
+      "name": "Food Sales",
+      "account_type": "Income",
+      "account_subtype": "Sales of Product Income",
+      "classification": "Revenue",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "All food revenue from Toast POS. Excludes beverage and alcohol."
+    },
+    {
+      "id": "ACC-4010",
+      "name": "Liquor Sales",
+      "account_type": "Income",
+      "account_subtype": "Sales of Product Income",
+      "classification": "Revenue",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Spirits, cocktail, and liquor revenue from Toast POS."
+    },
+    {
+      "id": "ACC-4020",
+      "name": "Beer & Wine Sales",
+      "account_type": "Income",
+      "account_subtype": "Sales of Product Income",
+      "classification": "Revenue",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Beer and wine revenue from Toast POS."
+    },
+    {
+      "id": "ACC-4030",
+      "name": "Non-Alcoholic Beverage Sales",
+      "account_type": "Income",
+      "account_subtype": "Sales of Product Income",
+      "classification": "Revenue",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Soda, coffee, juice, water, and NA beverage revenue."
+    },
+    {
+      "id": "ACC-4040",
+      "name": "Catering & Event Revenue",
+      "account_type": "Income",
+      "account_subtype": "Service Fee Income",
+      "classification": "Revenue",
+      "normal_balance": "Credit",
+      "is_active": true,
+      "description": "Private dining, off-site catering, and event buyout revenue."
+    },
+    {
+      "id": "ACC-4100",
+      "name": "Comps & Voids — Contra Revenue",
+      "account_type": "Income",
+      "account_subtype": "Discounts & Refunds",
+      "classification": "Revenue",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Manager comps, void adjustments, and customer refunds. Reduces gross revenue."
+    },
+
+
+    {
+      "id": "ACC-5000",
+      "name": "Food Cost — Produce",
+      "account_type": "Cost of Goods Sold",
+      "account_subtype": "Supplies & Materials",
+      "classification": "COGS",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "food_cost_target_pct": 28.0,
+      "description": "Vegetables, fruits, herbs, and fresh produce purchases. Primary vendor: Sunrise Produce."
+    },
+    {
+      "id": "ACC-5010",
+      "name": "Food Cost — Meat & Poultry",
+      "account_type": "Cost of Goods Sold",
+      "account_subtype": "Supplies & Materials",
+      "classification": "COGS",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "food_cost_target_pct": 30.0,
+      "description": "Beef, chicken, pork, lamb, and deli meat purchases. Primary vendor: Rio Grande Meats."
+    },
+    {
+      "id": "ACC-5020",
+      "name": "Food Cost — Dairy & Eggs",
+      "account_type": "Cost of Goods Sold",
+      "account_subtype": "Supplies & Materials",
+      "classification": "COGS",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "food_cost_target_pct": 25.0,
+      "description": "Cheese, butter, cream, eggs, and dairy products. Primary vendor: High Desert Dairy."
+    },
+    {
+      "id": "ACC-5030",
+      "name": "Food Cost — Dry Goods & Pantry",
+      "account_type": "Cost of Goods Sold",
+      "account_subtype": "Supplies & Materials",
+      "classification": "COGS",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "food_cost_target_pct": 22.0,
+      "description": "Flour, rice, beans, canned goods, oils, spices, and pantry staples."
+    },
+    {
+      "id": "ACC-5040",
+      "name": "Food Cost — Seafood",
+      "account_type": "Cost of Goods Sold",
+      "account_subtype": "Supplies & Materials",
+      "classification": "COGS",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "food_cost_target_pct": 32.0,
+      "description": "Fresh and frozen seafood purchases."
+    },
+    {
+      "id": "ACC-5100",
+      "name": "Liquor Cost",
+      "account_type": "Cost of Goods Sold",
+      "account_subtype": "Supplies & Materials",
+      "classification": "COGS",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "beverage_cost_target_pct": 20.0,
+      "description": "Spirits, mixers, and cocktail ingredient purchases. Primary vendor: Southwest Spirits."
+    },
+    {
+      "id": "ACC-5110",
+      "name": "Beer & Wine Cost",
+      "account_type": "Cost of Goods Sold",
+      "account_subtype": "Supplies & Materials",
+      "classification": "COGS",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "beverage_cost_target_pct": 25.0,
+      "description": "Beer kegs, bottles, and wine case purchases."
+    },
+
+
+    {
+      "id": "ACC-6000",
+      "name": "Labor — FOH Hourly Wages",
+      "account_type": "Expense",
+      "account_subtype": "Wages",
+      "classification": "Labor",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "labor_target_pct": 18.0,
+      "description": "Front-of-house hourly wages: servers, bussers, hosts, bartenders."
+    },
+    {
+      "id": "ACC-6010",
+      "name": "Labor — BOH Hourly Wages",
+      "account_type": "Expense",
+      "account_subtype": "Wages",
+      "classification": "Labor",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "labor_target_pct": 16.0,
+      "description": "Back-of-house hourly wages: line cooks, prep cooks, dishwashers."
+    },
+    {
+      "id": "ACC-6020",
+      "name": "Labor — Management Salaries",
+      "account_type": "Expense",
+      "account_subtype": "Wages",
+      "classification": "Labor",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "General manager and kitchen manager salaried compensation."
+    },
+    {
+      "id": "ACC-6030",
+      "name": "Payroll Tax Expense — FICA",
+      "account_type": "Expense",
+      "account_subtype": "Payroll Tax",
+      "classification": "Labor",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Employer share of Social Security (6.2%) and Medicare (1.45%)."
+    },
+    {
+      "id": "ACC-6040",
+      "name": "Workers Compensation Insurance",
+      "account_type": "Expense",
+      "account_subtype": "Insurance",
+      "classification": "Labor",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Workers comp premium. Allocated monthly."
+    },
+
+
+    {
+      "id": "ACC-7000",
+      "name": "Rent & Occupancy",
+      "account_type": "Expense",
+      "account_subtype": "Rent & Lease",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "monthly_amount": 8500.00,
+      "description": "Monthly base rent. NNN lease — utilities billed separately."
+    },
+    {
+      "id": "ACC-7010",
+      "name": "Utilities — Electric",
+      "account_type": "Expense",
+      "account_subtype": "Utilities",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Monthly electric bill. Ranges $900-$1,400 depending on season."
+    },
+    {
+      "id": "ACC-7020",
+      "name": "Utilities — Gas",
+      "account_type": "Expense",
+      "account_subtype": "Utilities",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Monthly natural gas bill for cooking and HVAC."
+    },
+    {
+      "id": "ACC-7030",
+      "name": "Utilities — Water & Sewer",
+      "account_type": "Expense",
+      "account_subtype": "Utilities",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Monthly water and sewer charges."
+    },
+    {
+      "id": "ACC-7100",
+      "name": "Linen & Uniforms",
+      "account_type": "Expense",
+      "account_subtype": "Supplies",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Weekly linen service (tablecloths, napkins) and staff uniform purchases. Primary vendor: Southwest Linen Co."
+    },
+    {
+      "id": "ACC-7110",
+      "name": "Smallwares & Kitchen Supplies",
+      "account_type": "Expense",
+      "account_subtype": "Supplies",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Glassware, plateware, cutlery, cookware, prep containers, and kitchen tools under $500."
+    },
+    {
+      "id": "ACC-7120",
+      "name": "Cleaning Supplies",
+      "account_type": "Expense",
+      "account_subtype": "Supplies",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Sanitizer, degreasers, mop supplies, trash liners, and janitorial products."
+    },
+    {
+      "id": "ACC-7130",
+      "name": "Paper & To-Go Supplies",
+      "account_type": "Expense",
+      "account_subtype": "Supplies",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "To-go containers, paper bags, napkins, straws, and disposable serviceware."
+    },
+    {
+      "id": "ACC-7200",
+      "name": "Marketing & Advertising",
+      "account_type": "Expense",
+      "account_subtype": "Advertising & Marketing",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Social media ads, Google ads, print, and promotional spend."
+    },
+    {
+      "id": "ACC-7210",
+      "name": "Third-Party Delivery Commissions",
+      "account_type": "Expense",
+      "account_subtype": "Commissions & Fees",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "DoorDash and Uber Eats commission fees (typically 15-30% of delivery revenue)."
+    },
+    {
+      "id": "ACC-7300",
+      "name": "Repairs & Maintenance",
+      "account_type": "Expense",
+      "account_subtype": "Repairs & Maintenance",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Equipment repairs, HVAC service, plumbing, and general facility maintenance."
+    },
+    {
+      "id": "ACC-7400",
+      "name": "Insurance — General Liability",
+      "account_type": "Expense",
+      "account_subtype": "Insurance",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "General liability and property insurance. Monthly allocation from annual premium."
+    },
+    {
+      "id": "ACC-7410",
+      "name": "Insurance — Liquor Liability",
+      "account_type": "Expense",
+      "account_subtype": "Insurance",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Dram shop / liquor liability insurance."
+    },
+    {
+      "id": "ACC-7500",
+      "name": "Software & Technology",
+      "account_type": "Expense",
+      "account_subtype": "Software",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Toast POS subscription, QuickBooks Online, BookKeep Buddy, reservation system, and other SaaS."
+    },
+    {
+      "id": "ACC-7510",
+      "name": "Credit Card Processing Fees",
+      "account_type": "Expense",
+      "account_subtype": "Bank Charges",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Toast and card processor transaction fees (approx. 2.5% of card revenue)."
+    },
+    {
+      "id": "ACC-7600",
+      "name": "Professional Services — Accounting",
+      "account_type": "Expense",
+      "account_subtype": "Legal & Professional Fees",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "CPA fees for tax preparation and quarterly review."
+    },
+    {
+      "id": "ACC-7700",
+      "name": "Licenses & Permits",
+      "account_type": "Expense",
+      "account_subtype": "Taxes & Licenses",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Business license, health permit, liquor license renewal, food handler certifications."
+    },
+    {
+      "id": "ACC-7800",
+      "name": "Depreciation Expense",
+      "account_type": "Expense",
+      "account_subtype": "Depreciation",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Monthly depreciation on kitchen equipment, furniture, fixtures, and leasehold improvements."
+    },
+    {
+      "id": "ACC-7900",
+      "name": "Interest Expense",
+      "account_type": "Expense",
+      "account_subtype": "Interest Paid",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Interest on SBA loan and equipment financing."
+    },
+    {
+      "id": "ACC-7950",
+      "name": "Miscellaneous Expense",
+      "account_type": "Expense",
+      "account_subtype": "Other Miscellaneous Service Cost",
+      "classification": "Operating Expense",
+      "normal_balance": "Debit",
+      "is_active": true,
+      "description": "Catch-all for uncategorized or one-off expenses awaiting re-classification."
+    }
+  ],
+
+  "demo_notes": {
+    "key_accounts_for_demo": [
+      "ACC-5000 through ACC-5110 feed the food cost % watchdog",
+      "ACC-6000 and ACC-6010 feed the labor % dashboard",
+      "ACC-4000 through ACC-4030 receive daily Toast revenue postings",
+      "ACC-2000 holds all pending vendor invoices awaiting approval",
+      "ACC-5000 (Sunrise Produce) is the W-9 demo vendor approaching $600 threshold",
+      "ACC-7100 (Southwest Linen Co) is the duplicate invoice demo vendor"
+    ],
+    "food_cost_target_overall_pct": 28.0,
+    "labor_cost_target_overall_pct": 32.0,
+    "prime_cost_target_pct": 60.0
+  }
+}

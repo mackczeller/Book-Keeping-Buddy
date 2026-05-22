@@ -1,0 +1,526 @@
+{
+  "company": "Mesa Verde Restaurant",
+  "generated_at": "2025-05-20T00:00:00Z",
+  "date_range": { "start": "2025-05-01", "end": "2025-05-30" },
+  "account": {
+    "institution": "First National Bank of New Mexico",
+    "account_name": "Mesa Verde Restaurant Operating",
+    "account_type": "Checking",
+    "qbo_account": "ACC-1000",
+    "plaid_account_id": "plaid_mock_acc_001",
+    "currency": "USD"
+  },
+  "opening_balance": 24800.00,
+  "closing_balance": 48614.38,
+  "transactions": [
+
+    {
+      "txn_id": "TXN-001", "date": "2025-05-01", "type": "credit",
+      "description": "Toast POS Deposit - May 01",
+      "amount": 1980.25, "running_balance": 26780.25,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-01_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-002", "date": "2025-05-02", "type": "credit",
+      "description": "Toast POS Deposit - May 02",
+      "amount": 3280.00, "running_balance": 30060.25,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-02_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-003", "date": "2025-05-02", "type": "debit",
+      "description": "ACH Payment - Rio Grande Meats INV RGM-88201",
+      "amount": 612.40, "running_balance": 29447.85,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0001",
+      "qbo_account": "ACC-5010", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-004", "date": "2025-05-03", "type": "credit",
+      "description": "Toast POS Deposit - May 03",
+      "amount": 3840.00, "running_balance": 33287.85,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-03_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-005", "date": "2025-05-04", "type": "credit",
+      "description": "Toast POS Deposit - May 04",
+      "amount": 2620.00, "running_balance": 35907.85,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-04_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-006", "date": "2025-05-05", "type": "credit",
+      "description": "Toast POS Deposit - May 05",
+      "amount": 1340.00, "running_balance": 37247.85,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-05_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-007", "date": "2025-05-05", "type": "debit",
+      "description": "ACH Payment - Albuquerque Bread & Bakery INV ABB-9910",
+      "amount": 186.00, "running_balance": 37061.85,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0004",
+      "qbo_account": "ACC-5030", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-008", "date": "2025-05-06", "type": "credit",
+      "description": "Toast POS Deposit - May 06",
+      "amount": 920.00, "running_balance": 37981.85,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-06_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-009", "date": "2025-05-07", "type": "credit",
+      "description": "Toast POS Deposit - May 07",
+      "amount": 1590.00, "running_balance": 39571.85,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-07_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-010", "date": "2025-05-07", "type": "debit",
+      "description": "ACH Payment - Sunrise Produce INV SP-4401",
+      "amount": 290.00, "running_balance": 39281.85,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0002",
+      "qbo_account": "ACC-5000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-011", "date": "2025-05-07", "type": "debit",
+      "description": "ACH Payment - Rio Grande Meats INV RGM-88350",
+      "amount": 534.00, "running_balance": 38747.85,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0006",
+      "qbo_account": "ACC-5010", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-012", "date": "2025-05-07", "type": "debit",
+      "description": "Monthly Rent - Desert Properties LLC",
+      "amount": 8500.00, "running_balance": 30247.85,
+      "category": "rent", "matched": true,
+      "matched_to": null,
+      "qbo_account": "ACC-7000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-013", "date": "2025-05-08", "type": "credit",
+      "description": "Toast POS Deposit - May 08",
+      "amount": 2050.00, "running_balance": 32297.85,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-08_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-014", "date": "2025-05-09", "type": "credit",
+      "description": "Toast POS Deposit - May 09",
+      "amount": 3420.00, "running_balance": 35717.85,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-09_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-015", "date": "2025-05-09", "type": "debit",
+      "description": "ACH Payment - High Desert Dairy INV HDD-20251",
+      "amount": 418.75, "running_balance": 35299.10,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0003",
+      "qbo_account": "ACC-5020", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-016", "date": "2025-05-10", "type": "credit",
+      "description": "Toast POS Deposit - May 10",
+      "amount": 4680.00, "running_balance": 39979.10,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-10_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-017", "date": "2025-05-11", "type": "credit",
+      "description": "Toast POS Deposit - May 11",
+      "amount": 2780.00, "running_balance": 42759.10,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-11_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-018", "date": "2025-05-12", "type": "credit",
+      "description": "Toast POS Deposit - May 12",
+      "amount": 1400.00, "running_balance": 44159.10,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-12_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-019", "date": "2025-05-12", "type": "debit",
+      "description": "ACH Payment - Sunrise Produce INV SP-4488",
+      "amount": 290.00, "running_balance": 43869.10,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0009",
+      "qbo_account": "ACC-5000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-020", "date": "2025-05-13", "type": "credit",
+      "description": "Toast POS Deposit - May 13",
+      "amount": 1070.00, "running_balance": 44939.10,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-13_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-021", "date": "2025-05-13", "type": "debit",
+      "description": "ACH Payment - Rio Grande Meats INV RGM-88491",
+      "amount": 578.60, "running_balance": 44360.50,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0011",
+      "qbo_account": "ACC-5010", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-022", "date": "2025-05-14", "type": "credit",
+      "description": "Toast POS Deposit - May 14",
+      "amount": 1720.00, "running_balance": 46080.50,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-14_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-023", "date": "2025-05-14", "type": "debit",
+      "description": "ACH Payment - High Desert Dairy INV HDD-20318",
+      "amount": 374.50, "running_balance": 45706.00,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0007",
+      "qbo_account": "ACC-5020", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-024", "date": "2025-05-14", "type": "debit",
+      "description": "NM Gas Co - Monthly Bill",
+      "amount": 388.00, "running_balance": 45318.00,
+      "category": "utilities", "matched": true,
+      "matched_to": null,
+      "qbo_account": "ACC-7020", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-025", "date": "2025-05-15", "type": "credit",
+      "description": "Toast POS Deposit - May 15",
+      "amount": 2110.00, "running_balance": 47428.00,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-15_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-026", "date": "2025-05-15", "type": "debit",
+      "description": "Albuquerque Bread & Bakery INV ABB-10042",
+      "amount": 204.00, "running_balance": 47224.00,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0012",
+      "qbo_account": "ACC-5030", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-027", "date": "2025-05-15", "type": "debit",
+      "description": "PNM Electric - Monthly Bill",
+      "amount": 1142.00, "running_balance": 46082.00,
+      "category": "utilities", "matched": true,
+      "matched_to": null,
+      "qbo_account": "ACC-7010", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-028", "date": "2025-05-16", "type": "credit",
+      "description": "Toast POS Deposit - May 16",
+      "amount": 3560.00, "running_balance": 49642.00,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-16_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-029", "date": "2025-05-17", "type": "credit",
+      "description": "Toast POS Deposit - May 17",
+      "amount": 4260.00, "running_balance": 53902.00,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-17_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-030", "date": "2025-05-17", "type": "debit",
+      "description": "SUSPENSE - ACH Debit SWSPIRITS 202505",
+      "amount": 840.00, "running_balance": 53062.00,
+      "category": "unmatched", "matched": false,
+      "matched_to": null,
+      "qbo_account": null,
+      "demo_flag": "UNMATCHED_TRANSACTION",
+      "demo_note": "Southwest Spirits ACH came through with a truncated description — agent cannot auto-match to INV-0005. Flagged in daily report for owner to manually match or reject. This demos the discrepancy detection feature."
+    },
+    {
+      "txn_id": "TXN-031", "date": "2025-05-18", "type": "credit",
+      "description": "Toast POS Deposit - May 18",
+      "amount": 2710.00, "running_balance": 55772.00,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-18_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-032", "date": "2025-05-18", "type": "debit",
+      "description": "City of ABQ Water & Sewer",
+      "amount": 214.00, "running_balance": 55558.00,
+      "category": "utilities", "matched": true,
+      "matched_to": null,
+      "qbo_account": "ACC-7030", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-033", "date": "2025-05-19", "type": "credit",
+      "description": "Toast POS Deposit - May 19",
+      "amount": 1300.00, "running_balance": 56858.00,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-19_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-034", "date": "2025-05-19", "type": "debit",
+      "description": "Mesa Supply Co INV MSC-1140",
+      "amount": 247.80, "running_balance": 56610.20,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0010",
+      "qbo_account": "ACC-7110", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-035", "date": "2025-05-19", "type": "debit",
+      "description": "SBA LOAN PMT 0052291",
+      "amount": 1240.00, "running_balance": 55370.20,
+      "category": "loan_payment", "matched": true,
+      "matched_to": null,
+      "qbo_account": "ACC-2500", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-036", "date": "2025-05-20", "type": "credit",
+      "description": "Toast POS Deposit - May 20",
+      "amount": 1180.00, "running_balance": 56550.20,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-20_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-037", "date": "2025-05-20", "type": "debit",
+      "description": "Rio Grande Meats INV RGM-88610",
+      "amount": 495.00, "running_balance": 56055.20,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0015",
+      "qbo_account": "ACC-5010", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-038", "date": "2025-05-21", "type": "credit",
+      "description": "Toast POS Deposit - May 21",
+      "amount": 1780.00, "running_balance": 57835.20,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-21_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-039", "date": "2025-05-21", "type": "debit",
+      "description": "Albuquerque Bread & Bakery INV ABB-10042",
+      "amount": 204.00, "running_balance": 57631.20,
+      "category": "unmatched", "matched": false,
+      "matched_to": null,
+      "qbo_account": null,
+      "demo_flag": "POSSIBLE_DUPLICATE_PAYMENT",
+      "demo_note": "ABQ Bread & Bakery INV ABB-10042 was already paid on TXN-026 on May 15. This second charge for the same invoice number and amount is flagged as a possible duplicate payment. Agent holds for owner review before posting to QuickBooks."
+    },
+    {
+      "txn_id": "TXN-040", "date": "2025-05-21", "type": "debit",
+      "description": "High Desert Dairy INV HDD-20405",
+      "amount": 391.60, "running_balance": 57239.60,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0016",
+      "qbo_account": "ACC-5020", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-041", "date": "2025-05-22", "type": "credit",
+      "description": "Toast POS Deposit - May 22",
+      "amount": 2160.00, "running_balance": 59399.60,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-22_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-042", "date": "2025-05-23", "type": "credit",
+      "description": "Toast POS Deposit - May 23",
+      "amount": 3500.00, "running_balance": 62899.60,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-23_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-043", "date": "2025-05-23", "type": "debit",
+      "description": "Google Ads - Mesa Verde Restaurant",
+      "amount": 320.00, "running_balance": 62579.60,
+      "category": "marketing", "matched": false,
+      "matched_to": null,
+      "qbo_account": null,
+      "demo_flag": "UNCATEGORIZED",
+      "demo_note": "Google Ads charge has no matching QuickBooks entry. Agent suggests posting to ACC-7200 Marketing & Advertising. Owner must approve before it posts. Good example of natural language edit demo: 'Move that $320 charge to marketing.'"
+    },
+    {
+      "txn_id": "TXN-044", "date": "2025-05-24", "type": "credit",
+      "description": "Toast POS Deposit - May 24",
+      "amount": 4420.00, "running_balance": 66999.60,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-24_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-045", "date": "2025-05-24", "type": "debit",
+      "description": "Rio Grande Meats INV RGM-88610",
+      "amount": 495.00, "running_balance": 66504.60,
+      "category": "unmatched", "matched": false,
+      "matched_to": null,
+      "qbo_account": null,
+      "demo_flag": "POSSIBLE_DUPLICATE_PAYMENT",
+      "demo_note": "Rio Grande Meats RGM-88610 was already paid on TXN-037 on May 20. Second charge for same invoice flagged before posting. Saves Mesa Verde $495."
+    },
+    {
+      "txn_id": "TXN-046", "date": "2025-05-25", "type": "credit",
+      "description": "Toast POS Deposit - May 25",
+      "amount": 2580.00, "running_balance": 69084.60,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-25_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-047", "date": "2025-05-26", "type": "credit",
+      "description": "Toast POS Deposit - May 26",
+      "amount": 1250.00, "running_balance": 70334.60,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-26_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-048", "date": "2025-05-27", "type": "credit",
+      "description": "Toast POS Deposit - May 27",
+      "amount": 1140.00, "running_balance": 71474.60,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-27_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-049", "date": "2025-05-27", "type": "debit",
+      "description": "Rio Grande Meats INV RGM-88740",
+      "amount": 546.80, "running_balance": 70927.80,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0019",
+      "qbo_account": "ACC-5010", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-050", "date": "2025-05-27", "type": "debit",
+      "description": "Southwest Linen Co INV SWL-7742",
+      "amount": 385.00, "running_balance": 70542.80,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0008",
+      "qbo_account": "ACC-7100", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-051", "date": "2025-05-28", "type": "credit",
+      "description": "Toast POS Deposit - May 28",
+      "amount": 1830.00, "running_balance": 72372.80,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-28_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-052", "date": "2025-05-28", "type": "debit",
+      "description": "Southwest Spirits INV SWS-3341",
+      "amount": 840.00, "running_balance": 71532.80,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0005",
+      "qbo_account": "ACC-5100", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-053", "date": "2025-05-29", "type": "credit",
+      "description": "Toast POS Deposit - May 29",
+      "amount": 2220.00, "running_balance": 73752.80,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-29_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-054", "date": "2025-05-29", "type": "debit",
+      "description": "Albuquerque Bread & Bakery INV ABB-10199",
+      "amount": 218.40, "running_balance": 73534.40,
+      "category": "vendor_payment", "matched": true,
+      "matched_to": "INV-0020",
+      "qbo_account": "ACC-5030", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-055", "date": "2025-05-30", "type": "credit",
+      "description": "Toast POS Deposit - May 30",
+      "amount": 3610.00, "running_balance": 77144.40,
+      "category": "sales_deposit", "matched": true,
+      "matched_to": "toast_sales_2025-05-30_card",
+      "qbo_account": "ACC-4000", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-056", "date": "2025-05-30", "type": "debit",
+      "description": "Liability Insurance - Western Mutual",
+      "amount": 480.00, "running_balance": 76664.40,
+      "category": "insurance", "matched": true,
+      "matched_to": null,
+      "qbo_account": "ACC-7400", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-057", "date": "2025-05-30", "type": "debit",
+      "description": "Toast POS Software - Monthly",
+      "amount": 165.00, "running_balance": 76499.40,
+      "category": "software", "matched": true,
+      "matched_to": null,
+      "qbo_account": "ACC-7500", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-058", "date": "2025-05-30", "type": "debit",
+      "description": "QuickBooks Online - Monthly",
+      "amount": 85.00, "running_balance": 76414.40,
+      "category": "software", "matched": true,
+      "matched_to": null,
+      "qbo_account": "ACC-7500", "demo_flag": null
+    },
+    {
+      "txn_id": "TXN-059", "date": "2025-05-30", "type": "debit",
+      "description": "BookKeep Buddy - Monthly Subscription",
+      "amount": 149.00, "running_balance": 76265.40,
+      "category": "software", "matched": true,
+      "matched_to": null,
+      "qbo_account": "ACC-7500",
+      "demo_flag": "EASTER_EGG",
+      "demo_note": "BookKeep Buddy subscription appears in Mesa Verde's own bank feed. Fun detail for the demo — the product pays for itself many times over."
+    },
+    {
+      "txn_id": "TXN-060", "date": "2025-05-30", "type": "debit",
+      "description": "WIRE TRANSFER - UNKNOWN PAYEE 8821",
+      "amount": 1800.00, "running_balance": 74465.40,
+      "category": "unmatched", "matched": false,
+      "matched_to": null,
+      "qbo_account": null,
+      "demo_flag": "ANOMALY_HIGH_VALUE",
+      "demo_note": "Unidentified wire transfer for $1,800 with no matching invoice or known vendor. Highest-priority anomaly flag. Agent surfaces this immediately in the daily report: 'Unidentified $1,800 wire transfer detected. No matching invoice or vendor on file. Please review immediately.'"
+    }
+  ],
+  "summary": {
+    "total_transactions": 60,
+    "total_credits": 66825.25,
+    "total_debits": 43010.87,
+    "matched_transactions": 55,
+    "unmatched_transactions": 5,
+    "flagged_transactions": 5,
+    "demo_flags": {
+      "anomaly_high_value": "TXN-060 — $1,800 unidentified wire, highest priority alert",
+      "possible_duplicate_payments": ["TXN-039 — ABQ Bread $204 already paid TXN-026", "TXN-045 — Rio Grande $495 already paid TXN-037"],
+      "unmatched_vendor": "TXN-030 — Southwest Spirits ACH with truncated description",
+      "uncategorized": "TXN-043 — Google Ads $320, suggest ACC-7200 Marketing",
+      "easter_egg": "TXN-059 — BookKeep Buddy subscription in the demo bank feed"
+    },
+    "total_potential_savings": 2499.00
+  }
+}

@@ -1,0 +1,452 @@
+{
+  "company": "Mesa Verde Restaurant",
+  "generated_at": "2025-05-20T00:00:00Z",
+  "count_date": "2025-05-20",
+  "count_time": "07:00:00",
+  "methodology": "Theoretical count = total purchased (from invoices) minus total depleted (from Toast sales). Actual count = physical count entered by owner via chatbot.",
+  "inventory": [
+
+    {
+      "ingredient_key": "chicken_breast",
+      "display_name": "Chicken Breast",
+      "unit": "lb",
+      "unit_cost": 4.20,
+      "total_purchased": 183,
+      "total_depleted_theoretical": 158,
+      "theoretical_count": 25,
+      "actual_count": 5,
+      "variance": -20,
+      "variance_value_dollars": -84.00,
+      "variance_pct": -80.0,
+      "status": "critical_variance",
+      "demo_flag": "WASTE_THEFT_ALERT",
+      "demo_note": "THE key inventory demo moment. Owner types 'I have 5 chicken breasts' — agent responds: theoretical count is 25 lbs, you are missing 20 lbs (~$84 at cost). Flag for waste review or possible theft?",
+      "purchase_history": [
+        { "invoice_id": "INV-0001", "date": "2025-05-01", "qty": 40, "unit_cost": 4.20 },
+        { "invoice_id": "INV-0006", "date": "2025-05-07", "qty": 35, "unit_cost": 4.20 },
+        { "invoice_id": "INV-0011", "date": "2025-05-14", "qty": 40, "unit_cost": 4.20 },
+        { "invoice_id": "INV-0015", "date": "2025-05-21", "qty": 30, "unit_cost": 4.20 },
+        { "invoice_id": "INV-0019", "date": "2025-05-28", "qty": 38, "unit_cost": 4.20 }
+      ]
+    },
+
+    {
+      "ingredient_key": "ground_beef",
+      "display_name": "Ground Beef 80/20",
+      "unit": "lb",
+      "unit_cost": 5.80,
+      "total_purchased": 128,
+      "total_depleted_theoretical": 119,
+      "theoretical_count": 9,
+      "actual_count": 8,
+      "variance": -1,
+      "variance_value_dollars": -5.80,
+      "variance_pct": -11.1,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0001", "date": "2025-05-01", "qty": 30, "unit_cost": 5.80 },
+        { "invoice_id": "INV-0006", "date": "2025-05-07", "qty": 25, "unit_cost": 5.80 },
+        { "invoice_id": "INV-0011", "date": "2025-05-14", "qty": 20, "unit_cost": 5.80 },
+        { "invoice_id": "INV-0015", "date": "2025-05-21", "qty": 25, "unit_cost": 5.80 },
+        { "invoice_id": "INV-0019", "date": "2025-05-28", "qty": 28, "unit_cost": 5.80 }
+      ]
+    },
+
+    {
+      "ingredient_key": "skirt_steak",
+      "display_name": "Skirt Steak",
+      "unit": "lb",
+      "unit_cost": 9.50,
+      "total_purchased": 57,
+      "total_depleted_theoretical": 49,
+      "theoretical_count": 8,
+      "actual_count": 7,
+      "variance": -1,
+      "variance_value_dollars": -9.50,
+      "variance_pct": -12.5,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0001", "date": "2025-05-01", "qty": 20, "unit_cost": 9.50 },
+        { "invoice_id": "INV-0011", "date": "2025-05-14", "qty": 22, "unit_cost": 9.50 },
+        { "invoice_id": "INV-0019", "date": "2025-05-28", "qty": 15, "unit_cost": 9.50 }
+      ]
+    },
+
+    {
+      "ingredient_key": "pork_carnitas",
+      "display_name": "Pork Carnitas",
+      "unit": "lb",
+      "unit_cost": 6.50,
+      "total_purchased": 40,
+      "total_depleted_theoretical": 33,
+      "theoretical_count": 7,
+      "actual_count": 7,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0006", "date": "2025-05-07", "qty": 20, "unit_cost": 6.50 },
+        { "invoice_id": "INV-0015", "date": "2025-05-21", "qty": 20, "unit_cost": 6.50 }
+      ]
+    },
+
+    {
+      "ingredient_key": "chorizo",
+      "display_name": "Chorizo",
+      "unit": "lb",
+      "unit_cost": 8.67,
+      "total_purchased": 30,
+      "total_depleted_theoretical": 24,
+      "theoretical_count": 6,
+      "actual_count": 6,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0001", "date": "2025-05-01", "qty": 10, "unit_cost": 8.04 },
+        { "invoice_id": "INV-0011", "date": "2025-05-14", "qty": 10, "unit_cost": 8.56 },
+        { "invoice_id": "INV-0015", "date": "2025-05-21", "qty": 10, "unit_cost": 9.40 }
+      ]
+    },
+
+    {
+      "ingredient_key": "bacon",
+      "display_name": "Bacon",
+      "unit": "lb",
+      "unit_cost": 11.48,
+      "total_purchased": 17,
+      "total_depleted_theoretical": 12,
+      "theoretical_count": 5,
+      "actual_count": 5,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0006", "date": "2025-05-07", "qty": 10, "unit_cost": 11.20 },
+        { "invoice_id": "INV-0019", "date": "2025-05-28", "qty": 7, "unit_cost": 11.76 }
+      ]
+    },
+
+    {
+      "ingredient_key": "eggs",
+      "display_name": "Large Eggs",
+      "unit": "dozen",
+      "unit_cost": 5.80,
+      "total_purchased": 53,
+      "total_depleted_theoretical": 44,
+      "theoretical_count": 9,
+      "actual_count": 8,
+      "variance": -1,
+      "variance_value_dollars": -5.80,
+      "variance_pct": -11.1,
+      "status": "normal",
+      "price_alert": true,
+      "price_alert_note": "Unit cost increased from $4.20 to $5.80/dozen on INV-0007 (May 9). Breakfast Burrito margin impacted.",
+      "demo_flag": "PRICE_INCREASE",
+      "purchase_history": [
+        { "invoice_id": "INV-0003", "date": "2025-05-02", "qty": 15, "unit_cost": 4.20 },
+        { "invoice_id": "INV-0007", "date": "2025-05-09", "qty": 20, "unit_cost": 5.80 },
+        { "invoice_id": "INV-0016", "date": "2025-05-22", "qty": 18, "unit_cost": 5.80 }
+      ]
+    },
+
+    {
+      "ingredient_key": "cheddar_cheese",
+      "display_name": "Shredded Cheddar",
+      "unit": "lb",
+      "unit_cost": 6.50,
+      "total_purchased": 53,
+      "total_depleted_theoretical": 46,
+      "theoretical_count": 7,
+      "actual_count": 6,
+      "variance": -1,
+      "variance_value_dollars": -6.50,
+      "variance_pct": -14.3,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0003", "date": "2025-05-02", "qty": 20, "unit_cost": 6.50 },
+        { "invoice_id": "INV-0007", "date": "2025-05-09", "qty": 15, "unit_cost": 6.50 },
+        { "invoice_id": "INV-0016", "date": "2025-05-22", "qty": 18, "unit_cost": 6.50 }
+      ]
+    },
+
+    {
+      "ingredient_key": "queso_fresco",
+      "display_name": "Queso Fresco",
+      "unit": "lb",
+      "unit_cost": 7.20,
+      "total_purchased": 28,
+      "total_depleted_theoretical": 22,
+      "theoretical_count": 6,
+      "actual_count": 6,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0003", "date": "2025-05-02", "qty": 10, "unit_cost": 7.20 },
+        { "invoice_id": "INV-0007", "date": "2025-05-09", "qty": 8, "unit_cost": 7.20 },
+        { "invoice_id": "INV-0016", "date": "2025-05-22", "qty": 10, "unit_cost": 7.20 }
+      ]
+    },
+
+    {
+      "ingredient_key": "sour_cream",
+      "display_name": "Sour Cream",
+      "unit": "lb",
+      "unit_cost": 4.25,
+      "total_purchased": 28,
+      "total_depleted_theoretical": 22,
+      "theoretical_count": 6,
+      "actual_count": 6,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0003", "date": "2025-05-02", "qty": 10, "unit_cost": 4.25 },
+        { "invoice_id": "INV-0007", "date": "2025-05-09", "qty": 8, "unit_cost": 4.25 },
+        { "invoice_id": "INV-0016", "date": "2025-05-22", "qty": 10, "unit_cost": 4.25 }
+      ]
+    },
+
+    {
+      "ingredient_key": "butter",
+      "display_name": "Butter Unsalted",
+      "unit": "lb",
+      "unit_cost": 8.96,
+      "total_purchased": 24,
+      "total_depleted_theoretical": 18,
+      "theoretical_count": 6,
+      "actual_count": 6,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0003", "date": "2025-05-02", "qty": 10, "unit_cost": 8.93 },
+        { "invoice_id": "INV-0007", "date": "2025-05-09", "qty": 8, "unit_cost": 8.68 },
+        { "invoice_id": "INV-0016", "date": "2025-05-22", "qty": 6, "unit_cost": 9.28 }
+      ]
+    },
+
+    {
+      "ingredient_key": "roma_tomatoes",
+      "display_name": "Roma Tomatoes",
+      "unit": "lb",
+      "unit_cost": 2.20,
+      "total_purchased": 50,
+      "total_depleted_theoretical": 42,
+      "theoretical_count": 8,
+      "actual_count": 9,
+      "variance": 1,
+      "variance_value_dollars": 2.20,
+      "variance_pct": 12.5,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0002", "date": "2025-05-01", "qty": 25, "unit_cost": 2.20 },
+        { "invoice_id": "INV-0009", "date": "2025-05-12", "qty": 25, "unit_cost": 2.20 }
+      ]
+    },
+
+    {
+      "ingredient_key": "avocados",
+      "display_name": "Avocados",
+      "unit": "case (48 ct)",
+      "unit_cost": 44.00,
+      "total_purchased": 4,
+      "total_depleted_theoretical": 3,
+      "theoretical_count": 1,
+      "actual_count": 1,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0002", "date": "2025-05-01", "qty": 2, "unit_cost": 44.00 },
+        { "invoice_id": "INV-0009", "date": "2025-05-12", "qty": 2, "unit_cost": 44.00 }
+      ]
+    },
+
+    {
+      "ingredient_key": "flour_tortillas",
+      "display_name": "Flour Tortillas 12-inch",
+      "unit": "pack (20 ct)",
+      "unit_cost": 8.40,
+      "total_purchased": 34,
+      "total_depleted_theoretical": 28,
+      "theoretical_count": 6,
+      "actual_count": 4,
+      "variance": -2,
+      "variance_value_dollars": -16.80,
+      "variance_pct": -33.3,
+      "status": "watch",
+      "demo_flag": "MINOR_VARIANCE",
+      "demo_note": "Moderate variance — 2 packs unaccounted. Could be staff meal usage or miscounting. Good secondary example if demoing waste detection depth.",
+      "purchase_history": [
+        { "invoice_id": "INV-0004", "date": "2025-05-02", "qty": 10, "unit_cost": 8.40 },
+        { "invoice_id": "INV-0012", "date": "2025-05-15", "qty": 12, "unit_cost": 8.40 },
+        { "invoice_id": "INV-0020", "date": "2025-05-28", "qty": 12, "unit_cost": 8.40 }
+      ]
+    },
+
+    {
+      "ingredient_key": "corn_tortillas",
+      "display_name": "Corn Tortillas",
+      "unit": "pack (50 ct)",
+      "unit_cost": 5.25,
+      "total_purchased": 26,
+      "total_depleted_theoretical": 21,
+      "theoretical_count": 5,
+      "actual_count": 5,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0004", "date": "2025-05-02", "qty": 8, "unit_cost": 5.25 },
+        { "invoice_id": "INV-0012", "date": "2025-05-15", "qty": 8, "unit_cost": 5.25 },
+        { "invoice_id": "INV-0020", "date": "2025-05-28", "qty": 10, "unit_cost": 5.25 }
+      ]
+    },
+
+    {
+      "ingredient_key": "tequila_blanco",
+      "display_name": "Tequila Blanco (1L)",
+      "unit": "bottle",
+      "unit_cost": 32.00,
+      "total_purchased": 12,
+      "total_depleted_theoretical": 9,
+      "theoretical_count": 3,
+      "actual_count": 3,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0005", "date": "2025-05-03", "qty": 6, "unit_cost": 32.00 },
+        { "invoice_id": "INV-0013", "date": "2025-05-17", "qty": 6, "unit_cost": 32.00 }
+      ]
+    },
+
+    {
+      "ingredient_key": "tequila_reposado",
+      "display_name": "Tequila Reposado (1L)",
+      "unit": "bottle",
+      "unit_cost": 38.00,
+      "total_purchased": 7,
+      "total_depleted_theoretical": 5,
+      "theoretical_count": 2,
+      "actual_count": 2,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0005", "date": "2025-05-03", "qty": 4, "unit_cost": 38.00 },
+        { "invoice_id": "INV-0013", "date": "2025-05-17", "qty": 3, "unit_cost": 38.00 }
+      ]
+    },
+
+    {
+      "ingredient_key": "house_red_wine",
+      "display_name": "House Red Wine",
+      "unit": "case (12 bottles)",
+      "unit_cost": 96.00,
+      "total_purchased": 4,
+      "total_depleted_theoretical": 3,
+      "theoretical_count": 1,
+      "actual_count": 1,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0005", "date": "2025-05-03", "qty": 2, "unit_cost": 96.00 },
+        { "invoice_id": "INV-0013", "date": "2025-05-17", "qty": 2, "unit_cost": 96.00 }
+      ]
+    },
+
+    {
+      "ingredient_key": "yellow_onions",
+      "display_name": "Yellow Onions",
+      "unit": "lb",
+      "unit_cost": 0.90,
+      "total_purchased": 80,
+      "total_depleted_theoretical": 68,
+      "theoretical_count": 12,
+      "actual_count": 11,
+      "variance": -1,
+      "variance_value_dollars": -0.90,
+      "variance_pct": -8.3,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0002", "date": "2025-05-01", "qty": 40, "unit_cost": 0.90 },
+        { "invoice_id": "INV-0009", "date": "2025-05-12", "qty": 40, "unit_cost": 0.90 }
+      ]
+    },
+
+    {
+      "ingredient_key": "tortilla_chips",
+      "display_name": "Tortilla Chips",
+      "unit": "lb",
+      "unit_cost": 6.42,
+      "total_purchased": 15,
+      "total_depleted_theoretical": 11,
+      "theoretical_count": 4,
+      "actual_count": 4,
+      "variance": 0,
+      "variance_value_dollars": 0.00,
+      "variance_pct": 0.0,
+      "status": "normal",
+      "demo_flag": null,
+      "purchase_history": [
+        { "invoice_id": "INV-0004", "date": "2025-05-02", "qty": 5, "unit_cost": 6.00 },
+        { "invoice_id": "INV-0012", "date": "2025-05-15", "qty": 5, "unit_cost": 6.24 },
+        { "invoice_id": "INV-0020", "date": "2025-05-28", "qty": 5, "unit_cost": 7.02 }
+      ]
+    }
+  ],
+
+  "summary": {
+    "total_ingredients_tracked": 20,
+    "items_on_target": 13,
+    "items_with_minor_variance": 5,
+    "items_with_critical_variance": 1,
+    "total_variance_value_dollars": -126.10,
+    "critical_items": [
+      {
+        "ingredient_key": "chicken_breast",
+        "display_name": "Chicken Breast",
+        "theoretical_count": 25,
+        "actual_count": 5,
+        "variance_lbs": -20,
+        "variance_dollars": -84.00,
+        "demo_trigger": "Owner types 'I have 5 chicken breasts' in chatbot"
+      }
+    ],
+    "demo_chatbot_script": {
+      "owner_input": "I have 5 chicken breasts",
+      "agent_response": "Theoretical count is 25 lbs. You are missing 20 lbs — approximately $84 at cost. This could be waste, over-portioning, or theft. Want me to flag this for a waste review?"
+    }
+  }
+}
