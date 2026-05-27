@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 function App() {
   const [messages, setMessages] = useState([
@@ -8,22 +8,37 @@ function App() {
     },
   ])
   const [input, setInput] = useState("")
+  const [loading, setLoading] = useState(false)
+  const bottomRef = useRef(null)
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages, loading])
 
   const sendMessage = async () => {
-    if (!input.trim()) return
+    if (!input.trim() || loading) return
 
     const userMessage = { role: "user", text: input }
     setMessages((prev) => [...prev, userMessage])
     setInput("")
+    setLoading(true)
 
-    const res = await fetch("http://127.0.0.1:8000/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: input }),
-    })
-
-    const data = await res.json()
-    setMessages((prev) => [...prev, { role: "assistant", text: data.response }])
+    try {
+      const res = await fetch("http://127.0.0.1:8000/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input }),
+      })
+      const data = await res.json()
+      setMessages((prev) => [...prev, { role: "assistant", text: data.response }])
+    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", text: "Sorry, I couldn't reach the server. Make sure the backend is running." },
+      ])
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleKeyDown = (e) => {
@@ -58,6 +73,21 @@ function App() {
               </div>
             </div>
           ))}
+
+          {/* Loading indicator */}
+          {loading && (
+            <div className="flex justify-start">
+              <div className="bg-stone-100 rounded-2xl rounded-bl-sm px-4 py-3">
+                <div className="flex gap-1 items-center h-4">
+                  <div className="w-2 h-2 bg-stone-400 rounded-full animate-bounce [animation-delay:0ms]"></div>
+                  <div className="w-2 h-2 bg-stone-400 rounded-full animate-bounce [animation-delay:150ms]"></div>
+                  <div className="w-2 h-2 bg-stone-400 rounded-full animate-bounce [animation-delay:300ms]"></div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div ref={bottomRef} />
         </div>
 
         {/* Input Bar */}
@@ -68,10 +98,12 @@ function App() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
+            disabled={loading}
           />
           <button
             onClick={sendMessage}
-            className="bg-amber-500 hover:bg-amber-600 text-white rounded-xl px-5 py-3 text-sm font-medium transition-colors"
+            disabled={loading}
+            className="bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-white rounded-xl px-5 py-3 text-sm font-medium transition-colors"
           >
             Send
           </button>
