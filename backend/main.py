@@ -74,8 +74,32 @@ def chat(body: ChatMessage):
     return {"response": response.content[0].text}
 
 @app.post("/report")
-def generate_report(date: str = "2024-05-10"):
+def generate_report(date: str = "2025-05-10"):
+    # Find the specific day in daily_sales
+    daily_sales_data = next(
+        (day for day in toast_sales["daily_sales"] if day["date"] == date),
+        None
+    )
     
+    if not daily_sales_data:
+        return {"error": f"No sales data found for {date}", "date": date}
+
+    # Filter shifts for that day
+    daily_shifts = [s for s in toast_labor["shifts"] if s["date"] == date]
+    
+    # Calculate daily labor totals
+    total_wage_cost = sum(s["wage_cost"] for s in daily_shifts)
+    total_tips = sum(s["tips"] for s in daily_shifts)
+    num_staff = len(daily_shifts)
+
+    daily_labor_summary = {
+        "date": date,
+        "num_staff": num_staff,
+        "total_wage_cost": total_wage_cost,
+        "total_tips": total_tips,
+        "shifts": daily_shifts
+    }
+
     report_prompt = f"""
     Generate a plain-English end-of-day bookkeeping report for Mesa Verde Restaurant.
     
@@ -83,26 +107,25 @@ def generate_report(date: str = "2024-05-10"):
     No jargon. Be specific with numbers. Keep it scannable.
     
     Structure it exactly like this:
-    
-    1. DAILY SUMMARY — revenue, covers, average check, how it compares to normal
+    1. DAILY SUMMARY — revenue, covers, average check, how it compares to the monthly average of $2,546/day
     2. FOOD COST — what % and whether it's in range (target is under 32%)
-    3. LABOR COST — what % and whether it's in range (target is under 30%)
+    3. LABOR COST — what % and whether it's in range (target is under 30%). Calculate labor % as wage cost divided by net revenue.
     4. FLAGS & ALERTS — anything unusual: duplicates, inventory gaps, compliance issues
-    5. SUGGESTIONS — 2-3 specific actionable items the owner should consider, each as a yes/no decision
+    5. SUGGESTIONS — 2-3 specific actionable items, each as a yes/no decision
     
     DATA FOR {date}:
-    Sales: {json.dumps(toast_sales['monthly_summary'])}
-    Labor: {json.dumps(toast_labor['monthly_summary'])}
+    Daily Sales: {json.dumps(daily_sales_data)}
+    Daily Labor: {json.dumps(daily_labor_summary)}
+    Menu Items: {json.dumps(toast_sales['menu_items'])}
     Invoices: {json.dumps(vendor_invoices['summary'])}
     Inventory: {json.dumps(inventory_counts['summary'])}
-    QuickBooks: {json.dumps(quickbooks_data)}
     """
-    
+
     response = client.messages.create(
         model="claude-sonnet-4-5",
         max_tokens=2048,
-        system="You are BookKeep Buddy, an AI bookkeeper for Mesa Verde Restaurant. Write clear, specific, plain-English reports for a restaurant owner who is not an accountant.",
+        system="You are BookKeep Buddy, an AI bookkeeper for Mesa Verde Restaurant. Write clear, specific, plain-English daily reports for a restaurant owner who is not an accountant.",
         messages=[{"role": "user", "content": report_prompt}]
     )
-    
+
     return {"report": response.content[0].text, "date": date}
