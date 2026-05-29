@@ -12,6 +12,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [report, setReport] = useState(null)
   const [reportLoading, setReportLoading] = useState(false)
+  const [reportDate, setReportDate] = useState("2025-05-10")
   const bottomRef = useRef(null)
 
   useEffect(() => {
@@ -48,8 +49,9 @@ function App() {
 
   const fetchReport = async () => {
     setReportLoading(true)
+    setReport(null)
     try {
-      const res = await fetch("http://127.0.0.1:8000/report", {
+      const res = await fetch(`http://127.0.0.1:8000/report?date=${reportDate}`, {
         method: "POST",
       })
       const data = await res.json()
@@ -152,7 +154,23 @@ function App() {
 
       {/* Report Tab */}
       {tab === "report" && (
-        <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-6 min-h-[600px]">
+  <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-6 min-h-[600px]">
+    <div className="flex gap-3 mb-6">
+      <input
+        type="date"
+        value={reportDate}
+        min="2025-05-01"
+        max="2025-05-30"
+        onChange={(e) => setReportDate(e.target.value)}
+        className="bg-stone-100 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+      />
+      <button
+        onClick={fetchReport}
+        className="bg-amber-500 hover:bg-amber-600 text-white rounded-xl px-5 py-2 text-sm font-medium transition-colors"
+      >
+        Generate Report
+      </button>
+    </div>
           {reportLoading && (
             <div className="flex items-center justify-center h-48 text-stone-400 text-sm">
               Generating your daily report...
