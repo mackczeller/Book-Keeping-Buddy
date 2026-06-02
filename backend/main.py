@@ -20,7 +20,6 @@ app.add_middleware(
 
 client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
-# Load mock data
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 with open(os.path.join(BASE_DIR, "toast_sales.json")) as f:
@@ -47,12 +46,19 @@ MENU ITEM COST DATA:
 - Carne Asada Plate: menu price $18.00, food cost $6.30, margin 35%
 - Chicken Quesadilla: menu price $11.00, food cost $3.30, margin 30%"""
 
+
 class ChatMessage(BaseModel):
     message: str
+
+
+class MetricsRequest(BaseModel):
+    date: str
+
 
 @app.get("/")
 def root():
     return {"status": "BookKeep Buddy is running"}
+
 
 @app.post("/chat")
 def chat(body: ChatMessage):
@@ -63,31 +69,25 @@ def chat(body: ChatMessage):
     Inventory Summary: {json.dumps(inventory_counts['summary'])}
     Labor Summary: {json.dumps(toast_labor['monthly_summary'])}
     """
-    
     response = client.messages.create(
         model="claude-sonnet-4-5",
         max_tokens=1024,
         system=SYSTEM_PROMPT + context,
         messages=[{"role": "user", "content": body.message}]
     )
-    
     return {"response": response.content[0].text}
+
 
 @app.post("/report")
 def generate_report(date: str = "2025-05-10"):
-    # Find the specific day in daily_sales
     daily_sales_data = next(
         (day for day in toast_sales["daily_sales"] if day["date"] == date),
         None
     )
-    
     if not daily_sales_data:
         return {"error": f"No sales data found for {date}", "date": date}
 
-    # Filter shifts for that day
     daily_shifts = [s for s in toast_labor["shifts"] if s["date"] == date]
-    
-    # Calculate daily labor totals
     total_wage_cost = sum(s["wage_cost"] for s in daily_shifts)
     total_tips = sum(s["tips"] for s in daily_shifts)
     num_staff = len(daily_shifts)
@@ -127,5 +127,73 @@ def generate_report(date: str = "2025-05-10"):
         system="You are BookKeep Buddy, an AI bookkeeper for Mesa Verde Restaurant. Write clear, specific, plain-English daily reports for a restaurant owner who is not an accountant.",
         messages=[{"role": "user", "content": report_prompt}]
     )
-
     return {"report": response.content[0].text, "date": date}
+
+
+@app.post("/metrics")
+def get_metrics(body: MetricsRequest):
+    date = body.date
+
+    daily = next(
+        (day for day in toast_sales["daily_sales"] if day["date"] == date),
+        None
+    )
+    if not daily:
+        return {"error": f"No sales data found for {date}"}
+
+    revenue      = daily.get("net_revenue", 0)
+    covers       = daily.get("covers", 0)
+    avg_check    = round(revenue / covers, 2) if covers > 0 else 0
+    food_cost    = daily.get("food_cost_actual", 0)
+    food_pct     = daily.get("food_cost_pct", 0)
+    labor_cost   = daily.get("labor_cost", 0)
+    labor_pct    = daily.get("labor_pct", 0)
+    net_profit   = revenue - food_cost - labor_cost
+    net_margin   = round((net_profit / revenue * 100), 1) if revenue > 0 else 0
+
+    all_days = toast_sales.get("daily_sales", [])
+    cash_position = sum(
+        d.get("net_revenue", 0)
+        for d in all_days
+        if d.get("date", "") <= date
+    )
+
+    return {
+        "date": date,
+        "covers": covers,
+        "avg_check": avg_check,
+        "metrics": {
+            "revenue": {
+                "label": "Daily Revenue",
+                "value": revenue,
+                "format": "currency",
+                "status": "ok",
+            },
+            "food_cost_pct": {
+                "label": "Food Cost %",
+                "value": food_pct,
+                "format": "percent",
+                "target": 32.0,
+                "status": "ok" if food_pct <= 32 else "warning",
+            },
+            "labor_cost_pct": {
+                "label": "Labor Cost %",
+                "value": labor_pct,
+                "format": "percent",
+                "target": 30.0,
+                "status": "ok" if labor_pct <= 30 else "warning",
+            },
+            "net_margin_pct": {
+                "label": "Net Margin",
+                "value": net_margin,
+                "format": "percent",
+                "status": "ok" if net_margin >= 10 else "warning",
+            },
+            "cash_position": {
+                "label": "Cash Position",
+                "value": cash_position,
+                "format": "currency",
+                "status": "ok" if cash_position >= 0 else "warning",
+            },
+        }
+    }
