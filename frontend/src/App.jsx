@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
-import MetricsTab from "./components/MetricsTab"
+import MetricsTab from "./MetricsTab"
+import ApprovalsTab from "./ApprovalsTab"
 
 function App() {
   const [tab, setTab] = useState("chat")
@@ -81,9 +82,7 @@ function App() {
         <button
           onClick={() => setTab("chat")}
           className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-            tab === "chat"
-              ? "bg-amber-500 text-white"
-              : "bg-white text-stone-600 hover:bg-stone-200"
+            tab === "chat" ? "bg-amber-500 text-white" : "bg-white text-stone-600 hover:bg-stone-200"
           }`}
         >
           Chat
@@ -91,19 +90,7 @@ function App() {
         <button
           onClick={() => setTab("report")}
           className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-            tab === "report"
-              ? "bg-amber-500 text-white"
-              : "bg-white text-stone-600 hover:bg-stone-200"
-          }`}
-        >
-          Daily Report
-        </button>
-        <button
-          onClick={() => setTab("report")}
-          className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-            tab === "report"
-              ? "bg-amber-500 text-white"
-              : "bg-white text-stone-600 hover:bg-stone-200"
+            tab === "report" ? "bg-amber-500 text-white" : "bg-white text-stone-600 hover:bg-stone-200"
           }`}
         >
           Daily Report
@@ -111,12 +98,18 @@ function App() {
         <button
           onClick={() => setTab("metrics")}
           className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
-            tab === "metrics"
-              ? "bg-amber-500 text-white"
-              : "bg-white text-stone-600 hover:bg-stone-200"
+            tab === "metrics" ? "bg-amber-500 text-white" : "bg-white text-stone-600 hover:bg-stone-200"
           }`}
         >
           Dashboard
+        </button>
+        <button
+          onClick={() => setTab("approvals")}
+          className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+            tab === "approvals" ? "bg-amber-500 text-white" : "bg-white text-stone-600 hover:bg-stone-200"
+          }`}
+        >
+          Approvals
         </button>
       </div>
 
@@ -175,23 +168,23 @@ function App() {
 
       {/* Report Tab */}
       {tab === "report" && (
-  <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-6 min-h-[600px]">
-    <div className="flex gap-3 mb-6">
-      <input
-        type="date"
-        value={reportDate}
-        min="2025-05-01"
-        max="2025-05-30"
-        onChange={(e) => setReportDate(e.target.value)}
-        className="bg-stone-100 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
-      />
-      <button
-        onClick={fetchReport}
-        className="bg-amber-500 hover:bg-amber-600 text-white rounded-xl px-5 py-2 text-sm font-medium transition-colors"
-      >
-        Generate Report
-      </button>
-    </div>
+        <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-6 min-h-[600px]">
+          <div className="flex gap-3 mb-6">
+            <input
+              type="date"
+              value={reportDate}
+              min="2025-05-01"
+              max="2025-05-30"
+              onChange={(e) => setReportDate(e.target.value)}
+              className="bg-stone-100 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+            />
+            <button
+              onClick={fetchReport}
+              className="bg-amber-500 hover:bg-amber-600 text-white rounded-xl px-5 py-2 text-sm font-medium transition-colors"
+            >
+              Generate Report
+            </button>
+          </div>
           {reportLoading && (
             <div className="flex items-center justify-center h-48 text-stone-400 text-sm">
               Generating your daily report...
@@ -204,10 +197,18 @@ function App() {
           )}
         </div>
       )}
+
       {/* Dashboard Tab */}
       {tab === "metrics" && (
         <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg min-h-[600px]">
           <MetricsTab selectedDate={reportDate} />
+        </div>
+      )}
+
+      {/* Approvals Tab */}
+      {tab === "approvals" && (
+        <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg min-h-[600px]">
+          <ApprovalsTab />
         </div>
       )}
     </div>
