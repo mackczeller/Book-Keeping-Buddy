@@ -1,6 +1,34 @@
 import { useState, useRef, useEffect } from "react"
+import ReactMarkdown from "react-markdown"
 import MetricsTab from "./MetricsTab"
 import ApprovalsTab from "./ApprovalsTab"
+
+const initialSuggestions = [
+  {
+    id: 1,
+    type: "action",
+    icon: "📋",
+    title: "Send W-9 Request to Sunrise Produce",
+    note: "Sunrise Produce has no W-9 on file and is $20 away from the $600 IRS reporting threshold. Sending a request now keeps you compliant.",
+    impact: "Compliance risk avoided",
+  },
+  {
+    id: 2,
+    type: "note",
+    icon: "📉",
+    title: "Breakfast Burrito — Margin Down to 18.6%",
+    note: "Egg costs rose 38% this month. Margin dropped from 30% to 18.6%. Review pricing with your team when you update the menu.",
+    impact: "Margin impact: -11.4%",
+  },
+  {
+    id: 3,
+    type: "note",
+    icon: "🍗",
+    title: "Chicken Breast Shortage — Review with Kitchen",
+    note: "20 lbs unaccounted for ($84 at cost). Theoretical count is 25 lbs, actual reported is 5 lbs. Review with kitchen staff for waste or theft.",
+    impact: "Potential loss: $84.00",
+  },
+]
 
 function App() {
   const [tab, setTab] = useState("chat")
@@ -15,6 +43,7 @@ function App() {
   const [report, setReport] = useState(null)
   const [reportLoading, setReportLoading] = useState(false)
   const [reportDate, setReportDate] = useState("2025-05-10")
+  const [suggestions, setSuggestions] = useState(initialSuggestions)
   const bottomRef = useRef(null)
 
   useEffect(() => {
@@ -68,6 +97,10 @@ function App() {
   useEffect(() => {
     if (tab === "report" && !report) fetchReport()
   }, [tab])
+
+  const handleSuggestion = (id) => {
+    setSuggestions((prev) => prev.filter((s) => s.id !== id))
+  }
 
   return (
     <div className="min-h-screen bg-stone-100 flex flex-col items-center justify-center p-4">
@@ -191,9 +224,56 @@ function App() {
             </div>
           )}
           {!reportLoading && report && (
-            <div className="prose prose-sm max-w-none text-stone-800 whitespace-pre-wrap leading-relaxed">
-              {report}
-            </div>
+            <>
+              <div className="prose prose-sm max-w-none text-stone-800">
+                <ReactMarkdown>{report}</ReactMarkdown>
+              </div>
+
+              {/* Suggestions Section */}
+              {suggestions.length > 0 && (
+                <div className="mt-8 border-t border-stone-100 pt-6">
+                  <h3 className="text-base font-bold text-stone-800 mb-1">Suggestions</h3>
+                  <p className="text-stone-500 text-xs mb-4">Items flagged for your awareness and action</p>
+                  <div className="space-y-3">
+                    {suggestions.map((s) => (
+                      <div key={s.id} className="border border-stone-200 rounded-2xl p-4">
+                        <div className="flex items-start gap-3">
+                          <span className="text-lg">{s.icon}</span>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="font-semibold text-stone-800 text-sm">{s.title}</span>
+                              {s.type === "action" && (
+                                <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-amber-100 text-amber-700">
+                                  Action
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-xs text-stone-500 leading-relaxed mb-1">{s.note}</p>
+                            <p className="text-xs font-medium text-stone-600">{s.impact}</p>
+                          </div>
+                        </div>
+                        {s.type === "action" && (
+                          <div className="flex gap-2 mt-3">
+                            <button
+                              onClick={() => handleSuggestion(s.id)}
+                              className="px-4 py-2 rounded-xl text-sm font-medium bg-stone-100 text-stone-600 hover:bg-stone-200 transition-colors"
+                            >
+                              Not Now
+                            </button>
+                            <button
+                              onClick={() => handleSuggestion(s.id)}
+                              className="px-4 py-2 rounded-xl text-sm font-medium bg-amber-500 text-white hover:bg-amber-600 transition-colors"
+                            >
+                              Yes, Send W-9 Request
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       )}

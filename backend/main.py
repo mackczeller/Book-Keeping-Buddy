@@ -52,7 +52,7 @@ class ChatMessage(BaseModel):
 
 class MetricsRequest(BaseModel):
     date: str
-    
+
 @app.get("/")
 def root():
     return {"status": "BookKeep Buddy is running"}
@@ -66,31 +66,28 @@ def chat(body: ChatMessage):
     Inventory Summary: {json.dumps(inventory_counts['summary'])}
     Labor Summary: {json.dumps(toast_labor['monthly_summary'])}
     """
-    
+
     response = client.messages.create(
         model="claude-sonnet-4-5",
         max_tokens=1024,
         system=SYSTEM_PROMPT + context,
         messages=[{"role": "user", "content": body.message}]
     )
-    
+
     return {"response": response.content[0].text}
 
 @app.post("/report")
 def generate_report(date: str = "2025-05-10"):
-    # Find the specific day in daily_sales
     daily_sales_data = next(
         (day for day in toast_sales["daily_sales"] if day["date"] == date),
         None
     )
-    
+
     if not daily_sales_data:
         return {"error": f"No sales data found for {date}", "date": date}
 
-    # Filter shifts for that day
     daily_shifts = [s for s in toast_labor["shifts"] if s["date"] == date]
-    
-    # Calculate daily labor totals
+
     total_wage_cost = sum(s["wage_cost"] for s in daily_shifts)
     total_tips = sum(s["tips"] for s in daily_shifts)
     num_staff = len(daily_shifts)
@@ -104,18 +101,19 @@ def generate_report(date: str = "2025-05-10"):
     }
 
     report_prompt = f"""
-    Generate a plain-English end-of-day bookkeeping report for Mesa Verde Restaurant.
-    
-    Write it like a smart, friendly bookkeeper leaving the owner a note at the end of their shift.
-    No jargon. Be specific with numbers. Keep it scannable.
-    
+    Generate a professional plain-English end-of-day bookkeeping report for Mesa Verde Restaurant.
+
+    Write it like a smart, professional bookkeeper leaving the owner a clear summary at the end of their shift.
+    No jargon. Be specific with numbers. Keep it scannable with clear sections.
+    Do NOT include any suggestions, yes/no prompts, or action items — those are handled separately.
+    Do NOT ask the owner to do anything. Just report the facts clearly and professionally.
+
     Structure it exactly like this:
     1. DAILY SUMMARY — revenue, covers, average check, how it compares to the monthly average of $2,546/day
-    2. FOOD COST — what % and whether it's in range (target is under 32%)
-    3. LABOR COST — what % and whether it's in range (target is under 30%). Calculate labor % as wage cost divided by net revenue.
-    4. FLAGS & ALERTS — anything unusual: duplicates, inventory gaps, compliance issues
-    5. SUGGESTIONS — 2-3 specific actionable items, each as a yes/no decision
-    
+    2. FOOD COST — what % and whether it is in range (target is under 32%)
+    3. LABOR COST — what % and whether it is in range (target is under 30%). Calculate labor % as wage cost divided by net revenue.
+    4. FLAGS & ALERTS — anything unusual: duplicates, inventory gaps, compliance issues. State the facts only, no recommendations.
+
     DATA FOR {date}:
     Daily Sales: {json.dumps(daily_sales_data)}
     Daily Labor: {json.dumps(daily_labor_summary)}
@@ -127,7 +125,7 @@ def generate_report(date: str = "2025-05-10"):
     response = client.messages.create(
         model="claude-sonnet-4-5",
         max_tokens=2048,
-        system="You are BookKeep Buddy, an AI bookkeeper for Mesa Verde Restaurant. Write clear, specific, plain-English daily reports for a restaurant owner who is not an accountant.",
+        system="You are BookKeep Buddy, an AI bookkeeper for Mesa Verde Restaurant. Write clear, specific, professional daily reports for a restaurant owner. Report facts only — no suggestions, no yes/no prompts, no action items.",
         messages=[{"role": "user", "content": report_prompt}]
     )
 
@@ -138,7 +136,6 @@ def generate_report(date: str = "2025-05-10"):
 def get_metrics(body: MetricsRequest):
     date = body.date
 
-    # ── Revenue ──────────────────────────────────────────────
     daily_sales_data = next(
         (day for day in toast_sales["daily_sales"] if day["date"] == date),
         None
@@ -151,23 +148,17 @@ def get_metrics(body: MetricsRequest):
     covers  = daily_sales_data.get("covers", 0)
     avg_check = round(revenue / covers, 2) if covers > 0 else 0
 
-    # ── Labor ────────────────────────────────────────────────
     daily_shifts = [s for s in toast_labor["shifts"] if s["date"] == date]
     labor_cost   = sum(s["wage_cost"] for s in daily_shifts)
     labor_pct    = round((labor_cost / revenue * 100), 1) if revenue > 0 else 0
 
-    # ── Food Cost ────────────────────────────────────────────
-    # Use monthly food cost spread across 30 days as daily estimate
     monthly_food_cost = vendor_invoices["summary"].get("total_food_cost", 0)
     food_cost = round(monthly_food_cost / 30, 2)
     food_pct  = round((food_cost / revenue * 100), 1) if revenue > 0 else 0
 
-    # ── Net Margin ───────────────────────────────────────────
     net_profit     = revenue - food_cost - labor_cost
     net_margin_pct = round((net_profit / revenue * 100), 1) if revenue > 0 else 0
 
-    # ── Cash Position ────────────────────────────────────────
-    # Sum all daily revenue up to and including this date as proxy
     all_days = toast_sales.get("daily_sales", [])
     cash_position = sum(
         d.get("total_sales", 0)
@@ -212,5 +203,7 @@ def get_metrics(body: MetricsRequest):
                 "format": "currency",
                 "status": "ok" if cash_position >= 0 else "warning",
             },
-        }
+        },
+        "covers": covers,
+        "avg_check": avg_check,
     }
