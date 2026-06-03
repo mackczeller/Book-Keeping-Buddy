@@ -70,11 +70,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-stone-100 flex flex-col items-center justify-center p-4">
+      {/* Header */}
       <div className="w-full max-w-2xl mb-4 text-center">
         <h1 className="text-2xl font-bold text-stone-800">BookKeep Buddy</h1>
         <p className="text-stone-500 text-sm">Mesa Verde Restaurant</p>
       </div>
 
+      {/* Tabs */}
       <div className="w-full max-w-2xl flex gap-2 mb-3">
         <button
           onClick={() => setTab("chat")}
@@ -85,6 +87,16 @@ function App() {
           }`}
         >
           Chat
+        </button>
+        <button
+          onClick={() => setTab("report")}
+          className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+            tab === "report"
+              ? "bg-amber-500 text-white"
+              : "bg-white text-stone-600 hover:bg-stone-200"
+          }`}
+        >
+          Daily Report
         </button>
         <button
           onClick={() => setTab("report")}
@@ -108,6 +120,7 @@ function App() {
         </button>
       </div>
 
+      {/* Chat Tab */}
       {tab === "chat" && (
         <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg flex flex-col h-[600px]">
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
@@ -160,24 +173,25 @@ function App() {
         </div>
       )}
 
+      {/* Report Tab */}
       {tab === "report" && (
-        <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-6 min-h-[600px]">
-          <div className="flex gap-3 mb-6">
-            <input
-              type="date"
-              value={reportDate}
-              min="2025-05-01"
-              max="2025-05-30"
-              onChange={(e) => setReportDate(e.target.value)}
-              className="bg-stone-100 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
-            />
-            <button
-              onClick={fetchReport}
-              className="bg-amber-500 hover:bg-amber-600 text-white rounded-xl px-5 py-2 text-sm font-medium transition-colors"
-            >
-              Generate Report
-            </button>
-          </div>
+  <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-6 min-h-[600px]">
+    <div className="flex gap-3 mb-6">
+      <input
+        type="date"
+        value={reportDate}
+        min="2025-05-01"
+        max="2025-05-30"
+        onChange={(e) => setReportDate(e.target.value)}
+        className="bg-stone-100 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-amber-400"
+      />
+      <button
+        onClick={fetchReport}
+        className="bg-amber-500 hover:bg-amber-600 text-white rounded-xl px-5 py-2 text-sm font-medium transition-colors"
+      >
+        Generate Report
+      </button>
+    </div>
           {reportLoading && (
             <div className="flex items-center justify-center h-48 text-stone-400 text-sm">
               Generating your daily report...
@@ -190,7 +204,7 @@ function App() {
           )}
         </div>
       )}
-
+      {/* Dashboard Tab */}
       {tab === "metrics" && (
         <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg min-h-[600px]">
           <MetricsTab selectedDate={reportDate} />
