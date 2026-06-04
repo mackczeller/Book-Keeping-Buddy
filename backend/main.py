@@ -144,7 +144,7 @@ def get_metrics(body: MetricsRequest):
     if not daily_sales_data:
         return {"error": f"No sales data found for {date}"}
 
-    revenue = daily_sales_data.get("total_sales", 0)
+    revenue = daily_sales_data.get("net_revenue", 0)
     covers  = daily_sales_data.get("covers", 0)
     avg_check = round(revenue / covers, 2) if covers > 0 else 0
 
