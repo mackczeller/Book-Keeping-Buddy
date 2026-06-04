@@ -152,8 +152,8 @@ def get_metrics(body: MetricsRequest):
     labor_cost   = sum(s["wage_cost"] for s in daily_shifts)
     labor_pct    = round((labor_cost / revenue * 100), 1) if revenue > 0 else 0
 
-    monthly_food_cost = vendor_invoices["summary"].get("total_food_cost", 0)
-    food_cost = round(monthly_food_cost / 30, 2)
+    food_cost = daily_sales_data.get("food_cost_actual", 0)
+    
     food_pct  = round((food_cost / revenue * 100), 1) if revenue > 0 else 0
 
     net_profit     = revenue - food_cost - labor_cost
@@ -161,7 +161,7 @@ def get_metrics(body: MetricsRequest):
 
     all_days = toast_sales.get("daily_sales", [])
     cash_position = sum(
-        d.get("total_sales", 0)
+        d.get("net_revenue", 0)
         for d in all_days
         if d.get("date", "") <= date
     )
