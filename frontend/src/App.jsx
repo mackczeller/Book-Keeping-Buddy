@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import Login from "./Login"
 import ReactMarkdown from "react-markdown"
 import MetricsTab from "./MetricsTab"
 import ApprovalsTab from "./ApprovalsTab"
@@ -31,6 +32,7 @@ const initialSuggestions = [
 ]
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false)
   const [tab, setTab] = useState("chat")
   const [messages, setMessages] = useState([
     {
@@ -102,6 +104,10 @@ function App() {
     setSuggestions((prev) => prev.filter((s) => s.id !== id))
   }
 
+  if (!loggedIn) {
+    return <Login onLogin={() => setLoggedIn(true)} />
+  }
+
   return (
     <div className="min-h-screen bg-stone-100 flex flex-col items-center justify-center p-4">
       {/* Header */}
@@ -143,6 +149,12 @@ function App() {
           }`}
         >
           Approvals
+        </button>
+        <button
+          onClick={() => setLoggedIn(false)}
+          className="ml-auto px-4 py-2 rounded-xl text-sm font-medium bg-white text-stone-400 hover:bg-stone-200 transition-colors"
+        >
+          Log Out
         </button>
       </div>
 
@@ -228,8 +240,6 @@ function App() {
               <div className="prose prose-sm max-w-none text-stone-800">
                 <ReactMarkdown>{report}</ReactMarkdown>
               </div>
-
-              {/* Suggestions Section */}
               {suggestions.length > 0 && (
                 <div className="mt-8 border-t border-stone-100 pt-6">
                   <h3 className="text-base font-bold text-stone-800 mb-1">Suggestions</h3>
