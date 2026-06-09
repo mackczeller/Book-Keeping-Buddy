@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import anthropic
@@ -7,6 +7,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
+SALES_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "toast_sales.json")
 
 app = FastAPI()
 
@@ -207,3 +209,72 @@ def get_metrics(body: MetricsRequest):
         "covers": covers,
         "avg_check": avg_check,
     }
+
+
+@app.get("/compare")
+async def compare_day(date: str = Query(..., description="Date in YYYY-MM-DD format")):
+    """
+    For a given date, returns that day's metrics vs the average
+    of all same-day-of-week entries in the dataset.
+    """
+    try:
+        with open(SALES_FILE) as f:
+            data = json.load(f)
+
+        daily_sales = data.get("daily_sales", [])
+
+        # Find the target day
+        target = next((d for d in daily_sales if d["date"] == date), None)
+        if not target:
+            raise HTTPException(status_code=404, detail=f"No data found for date {date}")
+
+        target_dow = target["day_of_week"]
+
+        # All days with the same day-of-week (excluding the target day itself)
+        same_dow = [d for d in daily_sales if d["day_of_week"] == target_dow and d["date"] != date]
+
+        if not same_dow:
+            raise HTTPException(status_code=404, detail=f"Not enough data to compare for {target_dow}")
+
+        def avg(field):
+            return round(sum(d[field] for d in same_dow) / len(same_dow), 2)
+
+        def pct_delta(current, baseline):
+            if baseline == 0:
+                return 0
+            return round(((current - baseline) / baseline) * 100, 1)
+
+        avg_revenue = avg("net_revenue")
+        avg_covers = avg("covers")
+        avg_food_cost_pct = avg("food_cost_pct")
+        avg_labor_pct = avg("labor_pct")
+
+        return {
+            "date": date,
+            "day_of_week": target_dow,
+            "weeks_compared": len(same_dow),
+            "today": {
+                "net_revenue": target["net_revenue"],
+                "covers": target["covers"],
+                "food_cost_pct": target["food_cost_pct"],
+                "labor_pct": target["labor_pct"],
+                "tips_collected": target["tips_collected"],
+            },
+            "dow_average": {
+                "net_revenue": avg_revenue,
+                "covers": avg_covers,
+                "food_cost_pct": avg_food_cost_pct,
+                "labor_pct": avg_labor_pct,
+            },
+            "deltas": {
+                "net_revenue": pct_delta(target["net_revenue"], avg_revenue),
+                "covers": pct_delta(target["covers"], avg_covers),
+                "food_cost_pct": pct_delta(target["food_cost_pct"], avg_food_cost_pct),
+                "labor_pct": pct_delta(target["labor_pct"], avg_labor_pct),
+            }
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
