@@ -14,14 +14,31 @@ function fmt(value, format) {
   return value;
 }
 
-function MetricCard({ label, value, format, status, target }) {
+function DeltaBadge({ delta }) {
+  if (delta === null || delta === undefined) return null;
+  const up = delta > 0;
+  const neutral = delta === 0;
+  if (neutral) return null;
+  const color = up ? "text-emerald-400" : "text-red-400";
+  const arrow = up ? "↑" : "↓";
+  return (
+    <span className={`text-xs font-semibold ml-2 whitespace-nowrap ${color}`}>
+      {arrow} {Math.abs(delta)}% vs avg
+    </span>
+  );
+}
+
+function MetricCard({ label, value, format, status, target, delta }) {
   const isWarning = status === "warning";
   return (
     <div className={`rounded-2xl p-6 border ${isWarning ? "border-amber-500 bg-amber-900/20" : "border-gray-700 bg-gray-800"}`}>
       <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">{label}</p>
-      <p className={`text-3xl font-bold tabular-nums ${isWarning ? "text-amber-400" : "text-white"}`}>
-        {fmt(value, format)}
-      </p>
+      <div className="flex items-baseline gap-1">
+        <p className={`text-3xl font-bold tabular-nums ${isWarning ? "text-amber-400" : "text-white"}`}>
+          {fmt(value, format)}
+        </p>
+        <DeltaBadge delta={delta} />
+      </div>
       {target && (
         <p className="text-xs text-gray-500 mt-1">
           Target: {fmt(target, format)}
@@ -44,6 +61,7 @@ function SkeletonCard() {
 
 export default function MetricsTab({ selectedDate }) {
   const [data, setData] = useState(null);
+  const [compareData, setCompareData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [laborThreshold, setLaborThreshold] = useState(30);
@@ -72,9 +90,32 @@ export default function MetricsTab({ selectedDate }) {
     fetchMetrics();
   }, [selectedDate]);
 
+  useEffect(() => {
+    if (!selectedDate) return;
+    const fetchCompare = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/compare?date=${selectedDate}`);
+        if (!res.ok) return;
+        const json = await res.json();
+        setCompareData(json);
+      } catch {
+        setCompareData(null);
+      }
+    };
+    fetchCompare();
+  }, [selectedDate]);
+
   const laborPct = data?.metrics?.labor_cost_pct?.value ?? null;
   const laborOverThreshold = laborPct !== null && laborPct > laborThreshold;
   const laborOverBy = laborPct !== null ? (laborPct - laborThreshold).toFixed(1) : 0;
+
+  const deltas = compareData?.deltas ?? {};
+
+  const deltaMap = {
+    revenue: deltas.net_revenue ?? null,
+    food_cost_pct: deltas.food_cost_pct ?? null,
+    labor_cost_pct: deltas.labor_pct ?? null,
+  };
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
@@ -88,6 +129,11 @@ export default function MetricsTab({ selectedDate }) {
               ? `Metrics for ${new Date(selectedDate + "T12:00:00").toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}`
               : "Select a date to load metrics"}
           </p>
+          {compareData && (
+            <p className="text-gray-500 text-xs mt-1">
+              Compared to {compareData.weeks_compared} other {compareData.day_of_week}s in May
+            </p>
+          )}
         </div>
 
         {/* Threshold control */}
@@ -158,7 +204,7 @@ export default function MetricsTab({ selectedDate }) {
           Array.from({ length: 5 }).map((_, i) => <SkeletonCard key={i} />)
         ) : data ? (
           Object.entries(data.metrics).map(([key, card]) => (
-            <MetricCard key={key} {...card} />
+            <MetricCard key={key} {...card} delta={deltaMap[key] ?? null} />
           ))
         ) : (
           !error && (
@@ -173,8 +219,13 @@ export default function MetricsTab({ selectedDate }) {
       {data && !loading && (
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-gray-800 rounded-2xl p-5 border border-gray-700">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">Covers</p>
-            <p className="text-2xl font-bold text-white">{data.covers}</p>
+            <div className="flex items-baseline gap-1">
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">Covers</p>
+            </div>
+            <div className="flex items-baseline gap-1">
+              <p className="text-2xl font-bold text-white">{data.covers}</p>
+              <DeltaBadge delta={deltas.covers ?? null} />
+            </div>
           </div>
           <div className="bg-gray-800 rounded-2xl p-5 border border-gray-700">
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">Avg Check</p>
