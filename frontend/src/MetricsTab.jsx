@@ -22,7 +22,7 @@ function DeltaBadge({ delta }) {
   const color = up ? "text-emerald-400" : "text-red-400";
   const arrow = up ? "↑" : "↓";
   return (
-    <span className={`text-xs font-semibold ml-2 whitespace-nowrap ${color}`}>
+    <span className={`text-xs font-semibold ml-2 whitespace-nowrap shrink-0 ${color}`}>
       {arrow} {Math.abs(delta)}% vs avg
     </span>
   );
