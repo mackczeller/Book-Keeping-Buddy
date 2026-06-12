@@ -33,7 +33,7 @@ function MetricCard({ label, value, format, status, target, delta }) {
   return (
     <div className={`rounded-2xl p-6 border ${isWarning ? "border-amber-500 bg-amber-900/20" : "border-gray-700 bg-gray-800"}`}>
       <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">{label}</p>
-      <div className="flex items-baseline gap-1">
+      <div className="flex items-baseline gap-1 flex-wrap">
         <p className={`text-3xl font-bold tabular-nums ${isWarning ? "text-amber-400" : "text-white"}`}>
           {fmt(value, format)}
         </p>
@@ -219,10 +219,10 @@ export default function MetricsTab({ selectedDate }) {
       {data && !loading && (
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-gray-800 rounded-2xl p-5 border border-gray-700">
-            <div className="flex items-baseline gap-1">
+            <div className="flex items-baseline gap-1 flex-wrap">
               <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">Covers</p>
             </div>
-            <div className="flex items-baseline gap-1">
+            <div className="flex items-baseline gap-1 flex-wrap">
               <p className="text-2xl font-bold text-white">{data.covers}</p>
               <DeltaBadge delta={deltas.covers ?? null} />
             </div>
