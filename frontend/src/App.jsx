@@ -214,6 +214,7 @@ function App() {
       {/* Report Tab */}
       {tab === "report" && (
         <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-6 min-h-[600px]">
+          <p className="text-xs text-stone-400 mb-2">📅 Demo data available for May 1–30, 2025</p>
           <div className="flex gap-3 mb-6">
             <input
               type="date"
