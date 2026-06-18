@@ -174,7 +174,7 @@ function App() {
                       : "bg-stone-100 text-stone-800 rounded-bl-sm"
                   }`}
                 >
-                  {msg.text}
+                  <ReactMarkdown>{msg.text}</ReactMarkdown>
                 </div>
               </div>
             ))}
