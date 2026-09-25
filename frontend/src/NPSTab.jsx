@@ -64,6 +64,7 @@ export default function NPSTab() {
       ) : (
         <div className="bg-white rounded-2xl shadow p-6">
           <h2 className="text-xl font-bold text-stone-800 mb-4">Thank you for your feedback!</h2>
+          <button onClick={() => { setSubmitted(false); setScore(null); setFeedback(""); setAnalysis(""); }} className="mb-4 text-sm text-amber-600 hover:underline">Submit another response</button>
           <div className="bg-stone-50 rounded-xl p-4 text-sm text-stone-800">
             <ReactMarkdown>{analysis}</ReactMarkdown>
           </div>
