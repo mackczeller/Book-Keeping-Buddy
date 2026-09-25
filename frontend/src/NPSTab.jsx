@@ -1,27 +1,23 @@
 import { useState } from "react"
-import ReactMarkdown from "react-markdown"
 
 export default function NPSTab() {
   const [score, setScore] = useState(null)
   const [feedback, setFeedback] = useState("")
   const [submitted, setSubmitted] = useState(false)
-  const [analysis, setAnalysis] = useState("")
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async () => {
     if (score === null) return
     setLoading(true)
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/nps`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/nps`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ score, feedback }),
       })
-      const data = await res.json()
-      setAnalysis(data.analysis)
       setSubmitted(true)
     } catch (err) {
-      setAnalysis("Error submitting response.")
+      console.error(err)
     }
     setLoading(false)
   }
@@ -62,12 +58,15 @@ export default function NPSTab() {
           </button>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl shadow p-6">
-          <h2 className="text-xl font-bold text-stone-800 mb-4">Thank you for your feedback!</h2>
-          <button onClick={() => { setSubmitted(false); setScore(null); setFeedback(""); setAnalysis(""); }} className="mb-4 text-sm text-amber-600 hover:underline">Submit another response</button>
-          <div className="bg-stone-50 rounded-xl p-4 text-sm text-stone-800">
-            <ReactMarkdown>{analysis}</ReactMarkdown>
-          </div>
+        <div className="bg-white rounded-2xl shadow p-6 text-center">
+          <h2 className="text-xl font-bold text-stone-800 mb-2">Thank you for your feedback!</h2>
+          <p className="text-stone-500 text-sm">You gave us a score of {score}/10. We appreciate your response.</p>
+          <button
+            onClick={() => { setSubmitted(false); setScore(null); setFeedback(""); }}
+            className="mt-4 text-sm text-amber-600 hover:underline"
+          >
+            Submit another response
+          </button>
         </div>
       )}
     </div>
