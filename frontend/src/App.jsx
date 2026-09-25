@@ -3,6 +3,7 @@ import Login from "./Login"
 import ReactMarkdown from "react-markdown"
 import MetricsTab from "./MetricsTab"
 import ApprovalsTab from "./ApprovalsTab"
+import NPSTab from "./NPSTab"
 
 const initialSuggestions = [
   {
@@ -151,6 +152,14 @@ function App() {
           Approvals
         </button>
         <button
+          onClick={() => setTab("nps")}
+          className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+            tab === "nps" ? "bg-amber-500 text-white" : "bg-white text-stone-600 hover:bg-stone-200"
+          }`}
+        >
+          NPS
+        </button>
+        <button
           onClick={() => setLoggedIn(false)}
           className="ml-auto px-4 py-2 rounded-xl text-sm font-medium bg-white text-stone-400 hover:bg-stone-200 transition-colors"
         >
@@ -297,6 +306,7 @@ function App() {
       )}
 
       {/* Approvals Tab */}
+      {tab === "nps" && <NPSTab />}
       {tab === "approvals" && (
         <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg min-h-[600px]">
           <ApprovalsTab />

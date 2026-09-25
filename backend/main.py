@@ -278,3 +278,26 @@ async def compare_day(date: str = Query(..., description="Date in YYYY-MM-DD for
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+class NPSRequest(BaseModel):
+    score: int
+    feedback: str = ""
+
+@app.post("/nps")
+def nps(body: NPSRequest):
+    prompt = f"""A user submitted an NPS response for BookKeep Buddy.
+Score: {body.score}/10
+Feedback: "{body.feedback}"
+
+Analyze this response formally with bullet points:
+- What the score indicates (Promoter 9-10, Passive 7-8, Detractor 0-6)
+- Key themes from their feedback
+- One specific recommendation based on their response"""
+
+    response = client.messages.create(
+        model="claude-sonnet-4-5",
+        max_tokens=500,
+        system=SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return {"analysis": response.content[0].text}
